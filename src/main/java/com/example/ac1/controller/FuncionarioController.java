@@ -16,6 +16,10 @@ public class FuncionarioController {
     @Autowired
     FuncionarioService fs;
 
+    @GetMapping("/cadastra")
+    public String cadastra(){
+        return "cadastro";
+    }
 
     @PostMapping("/cadastra")
     public ModelAndView criaFuncionario(@ModelAttribute Funcionario func){
@@ -23,7 +27,7 @@ public class FuncionarioController {
         
         func = fs.cadastraFuncionario(func.getCodigo(),func.getNome(), func.getSalario(), func.getIdade(), func.getCpf());
 
-        mv.addObject("funcionario", func);
+        mv.addObject("funcionarios", func);
 
         return mv;
     }

@@ -8,24 +8,8 @@
 <body>
     <h1>Funcionarios</h1>
 
-    
-    <form th:action="@{/cadastra}" method="POST">
-        Nome do funcionario
-        <input type="text" name="nome">
-        Salario
-        <input type="text" name="salario">
-        Idade
-        <input type="text" name="idade">
-        CPF
-        <input type="text" name="cpf">
-        
-        <input type="submit" name="btn">
-    </form>
-
-
-
     <table>
-        <tr th:each="funcionario : ${Funcionarios}">
+        <tr th:each="funcionario : ${funcionarios}">
             <td th:text="${funcionario?.codigo}"></td>
             <td th:text="${funcionario?.nome}"></td>
             <td th:text="${funcionario?.salario}"></td>
