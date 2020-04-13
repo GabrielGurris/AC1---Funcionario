@@ -13,12 +13,11 @@ public class FuncionarioService {
     @Autowired
     FuncionarioRepository fr;
 
-    public Funcionario cadastraFuncionario(int codigo, String nome, double salario, int idade, String cpf){
-        Funcionario f = new Funcionario(codigo,nome,salario,idade,cpf);
-        return f;
+    public void cadastraFuncionario(Funcionario func){
+        fr.save(func);
+
     }
-
-
+    
     public List<Funcionario> getFuncionarios(){
         return fr.findAll();
     }

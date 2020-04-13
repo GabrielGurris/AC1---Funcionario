@@ -16,28 +16,19 @@ public class FuncionarioController {
     @Autowired
     FuncionarioService fs;
 
-    @GetMapping("/cadastra")
-    public String cadastra(){
-        return "cadastro";
-    }
-
-    @PostMapping("/cadastra")
-    public ModelAndView criaFuncionario(@ModelAttribute Funcionario func){
-        ModelAndView mv = new ModelAndView("funcionarios");
-        
-        func = fs.cadastraFuncionario(func.getCodigo(),func.getNome(), func.getSalario(), func.getIdade(), func.getCpf());
-
-        mv.addObject("funcionarios", func);
-
-        return mv;
-    }
-
     @GetMapping("/funcionarios")
     public ModelAndView getFuncionarios(){
-        ModelAndView mv = new ModelAndView("funcionarios");
+        ModelAndView mv = new ModelAndView("cadastro");
         
         mv.addObject("funcionarios", fs.getFuncionarios());
 
         return mv;
+    }
+
+    @PostMapping("/cadastra")
+    public String cadastra(@ModelAttribute Funcionario func)
+    {
+        fs.cadastraFuncionario(func);
+        return "redirect:/funcionarios";
     }
 }

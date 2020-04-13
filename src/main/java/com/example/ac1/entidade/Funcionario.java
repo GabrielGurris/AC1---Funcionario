@@ -1,30 +1,31 @@
 package com.example.ac1.entidade;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
  * Funcionario
  */
 @Entity
-public class Funcionario {
+public class Funcionario implements Serializable{
 
-    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
+    @NotNull
     private String nome;
     private double salario;
     private int idade;
     private String cpf;
-
-    public Funcionario(int codigo, String nome, double salario, int idade, String cpf) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.salario = salario;
-        this.idade = idade;
-        this.cpf = cpf;
-	}
 
 	public int getCodigo() {
         return codigo;
