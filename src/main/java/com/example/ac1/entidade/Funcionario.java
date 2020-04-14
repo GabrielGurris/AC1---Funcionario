@@ -23,8 +23,11 @@ public class Funcionario implements Serializable{
     private int codigo;
     @NotNull
     private String nome;
+    @NotNull
     private double salario;
+    @NotNull
     private int idade;
+    @NotNull
     private String cpf;
 
 	public int getCodigo() {
